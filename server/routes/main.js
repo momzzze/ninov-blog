@@ -103,12 +103,18 @@ router.post('/search', async (req, res) => {
 
 
 router.get('/about', (req, res) => {
-
+    const locals = {
+        title: 'Search',
+        description: 'This is a blog website made with Node.js and Express.js and MongoDb',
+    };
     res.render('about', { locals });
 });
 
 router.get('/contact', (req, res) => {
-
+    const locals = {
+        title: 'Search',
+        description: 'This is a blog website made with Node.js and Express.js and MongoDb',
+    };
     res.render('contact', { locals });
 });
 
