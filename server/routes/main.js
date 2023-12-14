@@ -60,13 +60,41 @@ router.get('/post/:id', async (req, res) => {
             data,
         });
 
-
     } catch (error) {
         console.log(`Error: ${error}`);
     }
 });
 
+/** 
+ * POST /
+ * Post : SearchTerm
+*/
 
+router.post('/search', async (req, res) => {
+  try {
+    const locals = {
+        title: 'Search',
+        description: 'This is a blog website made with Node.js and Express.js and MongoDb',
+    };
+    let searchTerm=req.body.searchTerm;
+    const searchNoSpecialChars = searchTerm.replace(/[^a-zA-Z ]/g, "");
+
+    const data=await Post.find({
+        $or: [
+            { title: { $regex: new RegExp(searchNoSpecialChars,'i') } },
+            { body: { $regex: new RegExp(searchNoSpecialChars,'i') } }
+        ]
+    });
+
+    res.render('search', {
+        locals,
+        data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+})
 
 
 
@@ -134,3 +162,17 @@ module.exports = router;
 //     ])
 // }
 // insertPostData();
+
+
+// router.post('', async (req, res) => {
+//     const locals = {
+//         title: data.title,
+//         description: 'This is a blog website made with Node.js and Express.js and MongoDb',
+//     };
+    
+//     res.render('post', {
+//         locals,
+//         data,
+//     });
+
+// })

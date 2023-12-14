@@ -10,6 +10,10 @@ const PORT=5000 || process.env.PORT;
 //connect to database
 connectDB();
 
+// middleware to pass data trough forms
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
 app.use(express.static('public'));
 
 //template engine
