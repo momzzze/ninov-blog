@@ -52,12 +52,14 @@ router.get('/post/:id', async (req, res) => {
         const data = await Post.findById({ _id: slug });
         const locals = {
             title: data.title,
-            description: 'This is a blog website made with Node.js and Express.js and MongoDb',
+            description: 'This is a blog website made with Node.js and Express.js and MongoDb'
+           
         };
 
         res.render('post', {
             locals,
             data,
+            currentRoute: `/post/${slug}`
         });
 
     } catch (error) {
@@ -96,18 +98,12 @@ router.post('/search', async (req, res) => {
 
 })
 
-
-
-
-
-
-
 router.get('/about', (req, res) => {
     const locals = {
         title: 'Search',
         description: 'This is a blog website made with Node.js and Express.js and MongoDb',
     };
-    res.render('about', { locals });
+    res.render('about', { locals, currentRoute: '/about' });
 });
 
 router.get('/contact', (req, res) => {
@@ -115,7 +111,7 @@ router.get('/contact', (req, res) => {
         title: 'Search',
         description: 'This is a blog website made with Node.js and Express.js and MongoDb',
     };
-    res.render('contact', { locals });
+    res.render('contact', { locals, currentRoute: '/contact' });
 });
 
 

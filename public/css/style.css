@@ -126,6 +126,16 @@ img {
   justify-content: end;
 }
 
+.logout{
+  margin-left: 10px;
+  font-size: var(--font-size-md);
+  color: var(--black);
+  text-decoration: none;
+}
+.logout:hover{
+  color: var(--gray);
+}
+
 .header__button button {
   display: flex;
   gap: 0.3rem;
@@ -159,7 +169,7 @@ img {
 }
 
 .header__nav ul a:hover {
-  text-decoration: underline;
+  color: var(--gray);
 }
 .header__nav ul a.active {
   color: var(--gray);
